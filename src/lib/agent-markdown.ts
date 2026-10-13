@@ -12,7 +12,6 @@
 
 import { getCollection } from "astro:content";
 import {
-  AGENT_SKILLS,
   ASK_KARMA,
   EXTERNAL,
   PROGRAM_PROJECTS_URL,
@@ -22,6 +21,7 @@ import {
 import { HOME_COPY, OBJECTIVES, REPORT_CADENCES } from "../data/landing";
 import { NEXT_ROUND } from "../data/kernel";
 import { PODS, REVDEV_FUNDING_FACTS, RND_OPEN_RFPS } from "../data/programs";
+import { SKILLS } from "./skills";
 
 export type PostSummary = {
   id: string;
@@ -122,60 +122,45 @@ const appLines = () => [
   `- ${link(ASK_KARMA.label, ASK_KARMA.href)}: Karma's assistant for this program, no sign-in needed`,
 ];
 
-/** /llms.txt — https://llmstxt.org */
-export const llmsTxt = (posts: PostSummary[], site: URL): string =>
+/**
+ * /llms.txt — https://llmstxt.org. An index, not a copy: one line per page,
+ * app destination and skill, each linking to the source that holds the detail.
+ */
+export const llmsTxt = (site: URL): string =>
   [
     `# ${SITE.title}`,
     "",
     `> ${SITE.description}`,
     "",
-    `${SITE.name} is the public site for Filecoin's public goods funding, ${SITE.administeredBy}. Applications, milestones, reports and payouts live in the app at ${link("app.filpgf.io", EXTERNAL.app)}, run on ${link("Karma", "https://karmahq.org")}.`,
+    `${SITE.name} explains what each program funds and how. Applications, milestones, reports and payouts live in ${link("app.filpgf.io", EXTERNAL.app)}, run on Karma. For general Filecoin docs, see ${link("filecoin.io/learn", EXTERNAL.filecoin)}.`,
     "",
-    "## When to use this",
-    "",
-    `- Use ${SITE.name} to learn what Filecoin funds, which of the three programs a piece of work fits (Kernel, Revenue Development, R&D), how each program pays out, and how funded work is reported.`,
-    `- Use ${link("app.filpgf.io", EXTERNAL.app)} to apply, submit milestone reports, browse projects, and read reports and financials. The site is editorial copy; the app holds the live data.`,
-    `- Use ${link("Karma's agent skills", EXTERNAL.skills)} to do those app tasks from an agent (see Agent skills below).`,
-    `- Not for general Filecoin documentation: see ${link("filecoin.io/learn", EXTERNAL.filecoin)}. ${link("RetroPGF", EXTERNAL.retropgf)} is paused.`,
-    "",
-    "## Programs",
-    "",
-    ...objectiveLines(site).flatMap((block) => [block, ""]),
     "## Pages",
     "",
-    `- ${link("Home", absolute("/", site))}: the three objectives, reporting cadence, latest posts`,
+    `- ${link("Home", absolute("/", site))}: the three objectives and how progress is reported`,
     ...PAGES.map(
       (page) =>
         `- ${link(page.title, absolute(page.path, site))}: ${page.summary}`,
     ),
     "",
-    "## Apply and report (app.filpgf.io)",
+    "## App",
     "",
-    `- ${link("Apply", NEXT_ROUND.ctaHref)}: the application form the Kernel and ProPGF pages link to`,
+    `- ${link("Apply", NEXT_ROUND.ctaHref)}`,
     ...appLines(),
-    "",
-    "## How progress is reported",
-    "",
-    ...reportLines(),
     "",
     "## Agent skills",
     "",
-    `Install with \`npx skills add show-karma/skills\`. Source: ${link("show-karma/skills", EXTERNAL.skills)}.`,
+    `Install with \`npx skills add show-karma/filecoin-grants\`, or as a Claude Code plugin with \`/plugin marketplace add show-karma/filecoin-grants\`.`,
     "",
-    ...AGENT_SKILLS.map(
-      (skill) => `- ${link(skill.name, skill.href)}: ${skill.use}`,
+    ...SKILLS.map(
+      (skill) =>
+        `- ${link(skill.name, skill.href)}: ${skill.description.split(". ")[0]}.`,
     ),
-    "",
-    "## Blog",
-    "",
-    ...postLines(posts, site),
+    `- ${link("show-karma/skills", EXTERNAL.skills)}: Karma's skills for applying, posting milestones and verifying them`,
     "",
     "## Optional",
     "",
-    `- ${link("Sitemap", absolute("/sitemap-index.xml", site))}`,
     `- ${link("Homepage as Markdown", absolute("/index.md", site))}`,
-    `- ${link("Filecoin on GitHub", EXTERNAL.github)}`,
-    `- ${link("Discord", EXTERNAL.discord)}`,
+    `- ${link("Sitemap", absolute("/sitemap-index.xml", site))}`,
     "",
   ].join("\n");
 

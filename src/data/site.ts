@@ -22,41 +22,12 @@ export const EXTERNAL = {
   twitter: "https://twitter.com/Filecoin",
   discord: "https://discord.gg/yeQ2hcd2TD",
   github: "https://github.com/filecoin-project",
+  /** Karma's general agent skills: applying, posting milestones, reviewing. */
   skills: "https://github.com/show-karma/skills",
+  /** This repo; its `skills/` folder is the FilPGF agent toolkit. */
+  repo: "https://github.com/show-karma/filecoin-grants",
   slack: "https://filecoin.io/slack",
 } as const;
-
-/**
- * Karma's agent skills that cover the work this site points to: applying,
- * posting milestones, reviewing. They are general Karma skills, not
- * Filecoin-specific ones, so they stay in show-karma/skills and are linked from
- * /llms.txt rather than copied here. Mirrors that repo's README table.
- */
-export const AGENT_SKILLS = [
-  {
-    name: "setup-agent",
-    use: "Get a Karma API key. Run once before any other skill.",
-  },
-  {
-    name: "project-manager",
-    use: "Create a project, record a grant, and post milestones and updates.",
-  },
-  {
-    name: "funding-program-manager",
-    use: "Apply to a program; for program admins, manage reviewers, applications, milestones and payouts.",
-  },
-  {
-    name: "find-funding-opportunities",
-    use: "Search the Karma Funding Map for open programs, Filecoin's included.",
-  },
-  {
-    name: "simocracy-milestone-evaluations",
-    use: "For reviewers: have a program's Simocracy Sims evaluate an application's delivered milestones.",
-  },
-].map((skill) => ({
-  ...skill,
-  href: `${EXTERNAL.skills}/tree/main/skills/${skill.name}`,
-}));
 
 /**
  * Programme id for the batch the headline stats are drawn from.

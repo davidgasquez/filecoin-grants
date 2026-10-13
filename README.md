@@ -130,9 +130,17 @@ them was dead config and has been removed.
 
 ## For agents
 
-- `/llms.txt` — what the site and app are for, when to use which, and links to
-  every program, report and Karma agent skill. Built from `src/data` by
-  `src/lib/agent-markdown.ts`.
+- `skills/` is the FilPGF agent toolkit: one folder per skill, in the
+  [Agent Skills](https://agentskills.io/specification) format. Install with
+  `npx skills add show-karma/filecoin-grants`, or in Claude Code with
+  `/plugin marketplace add show-karma/filecoin-grants` then
+  `/plugin install filpgf@filpgf`. `plugin.json` + `mcp.json`
+  ([Agent Plugins](https://agent-plugins.org/specification)) and
+  `.claude-plugin/` package the same folder. `src/lib/__tests__/skills.test.ts`
+  checks each skill's frontmatter.
+- `/llms.txt` is a short index of the pages, app destinations and skills, each
+  linking to its source. The skills list is read from `skills/*/SKILL.md` at
+  build time. Built by `src/lib/agent-markdown.ts`.
 - `Accept: text/markdown` on `/` returns `/index.md` (`Vary: Accept`), and on a
   missing page returns `/404.md` with a 404. Vercel routes these, not the page:
   `src/integrations/markdown-negotiation.ts` adds them to the adapter's
