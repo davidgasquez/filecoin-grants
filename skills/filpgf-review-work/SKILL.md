@@ -29,7 +29,7 @@ Review progress:
 ```
 
 1. **Scope**: the project and Karma application reference, the program, the milestone if any, and the as-of date. Confirm them with the user if any is ambiguous.
-2. **Research**: gather from each source with its skill — Karma (filpgf-read-karma), OSO (filpgf-query-oso), the project's git repository. Run independent lookups in parallel.
+2. **Research**: gather from each source — Karma (filpgf-read-karma), OSO through its MCP server, the project's git repository. Run independent lookups in parallel.
 3. **Reconcile**: Karma wins for amounts, milestone status and payments; OSO for metrics; git for code. When sources disagree, show both values and name each source.
 4. **Assess**: as the reference file for the review type says.
 5. **Render**: the packet, then a short run log listing each call made and anything that failed.

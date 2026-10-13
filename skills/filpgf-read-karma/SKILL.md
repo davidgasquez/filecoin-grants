@@ -1,36 +1,44 @@
 ---
 name: filpgf-read-karma
-description: Reads public FilPGF data from the Karma API with a stdlib Python script — programs, funding applications and their criteria, project grants and milestones, the milestone verification queue, and Kernel functions, commitments and readings. No API key needed. Use when a task needs FilPGF or app.filpgf.io application, milestone, grant or Kernel data.
+description: Reads public FilPGF data from the Karma API — programs, funding applications and their criteria, project grants and milestones, the milestone verification queue, payouts, and Kernel functions, commitments and readings. No key needed. Use when a task needs FilPGF or app.filpgf.io application, milestone, grant, payout or Kernel data.
 license: MIT
 ---
 
 # Reading Karma data
 
-app.filpgf.io is Karma's app for the `filecoin` community. Every read used here is a public GET on `https://gapapi.karmahq.xyz`; no key or sign-in.
+app.filpgf.io runs on Karma. Its data is public over plain HTTP GET at `https://gapapi.karmahq.xyz`, community slug `filecoin`. Use any HTTP client.
 
-Run the script from this skill's folder; it prints JSON:
+The OpenAPI spec is the reference for every path, parameter and response shape:
 
-```bash
-python3 scripts/karma.py programs                 # program IDs and titles
-python3 scripts/karma.py pending                  # milestones awaiting verification
-python3 scripts/karma.py applications 1479        # every application to a program
-python3 scripts/karma.py application APP-XXXX-XXXX
-python3 scripts/karma.py grants <projectUID>      # grants with milestones
-python3 scripts/karma.py project <projectUID>
-python3 scripts/karma.py indicators <projectUID>  # Kernel indicators and readings
-python3 scripts/karma.py kernel overview          # also: functions, projects, commitments
-python3 scripts/karma.py get /v2/...              # any other GET
-```
+- JSON: https://gapapi.karmahq.xyz/v2/docs/json
+- YAML: https://gapapi.karmahq.xyz/v2/docs/yaml
+- Browsable: https://gapapi.karmahq.xyz/v2/docs
 
-Pipe into `jq` or Python to filter. The script pages through lists for you.
+Fetch the spec and search it for a path rather than guessing one.
+
+## Paths FilPGF work uses
+
+| Need | GET |
+|---|---|
+| Programs and their IDs | `/v2/communities/filecoin/programs` |
+| Applications to a program | `/v2/funding-applications/program/{programId}` |
+| One application | `/v2/funding-applications/{referenceNumber}` |
+| Milestones awaiting verification | `/v2/communities/filecoin/milestones/pending-verification` |
+| A project | `/v2/projects/{identifier}` |
+| A project's grants and milestones | `/v2/projects/{identifier}/grants` |
+| Payouts per grant | `/v2/communities/filecoin/payouts/public` |
+| Kernel | `/v2/kernel/overview`, `/functions`, `/projects`, `/commitments` |
+| A project's Kernel indicators | `/v2/indicators/projects/{projectUID}` |
+
+List endpoints page with `page` and `limit`; a page holds at most 50 items, so follow the pagination fields in the response until the last page.
 
 ## How the records connect
 
-- An application (`referenceNumber`, e.g. `APP-…`) carries the form answers in `applicationData`, including the criteria a milestone is judged against. It links to a project through `projectUID`.
-- A project has grants; each grant has `milestones` with `currentStatus`, `endsAt` and `statusHistory`.
-- `pending` lists milestones the team marked complete that no reviewer has verified yet, with `projectUid` and `grantUid` to follow.
-- Kernel `projects` and `commitments` key on `projectUID`; `functions` lists every Kernel function with its tier and SLA.
+- An application (`referenceNumber`, `APP-…`) holds the form answers in `applicationData`, including the deliverables and criteria a milestone is judged against. `projectUID` links it to the project.
+- A project's grants each carry `milestones` with `currentStatus`, `endsAt` and `statusHistory`.
+- The pending-verification queue gives `projectUid` and `grantUid` for each milestone a team marked complete.
+- Kernel projects carry `osoProjectSlug`, the key for their data on OSO.
 
 ## Writing
 
-Reads only. To apply, post updates or verify milestones, use Karma's skills: https://github.com/show-karma/skills
+This skill only reads. To apply, post updates or verify milestones, use Karma's skills: https://github.com/show-karma/skills

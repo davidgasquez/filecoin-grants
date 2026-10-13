@@ -13,6 +13,7 @@
 import { getCollection } from "astro:content";
 import {
   ASK_KARMA,
+  KARMA,
   EXTERNAL,
   PROGRAM_PROJECTS_URL,
   SITE,
@@ -22,6 +23,7 @@ import { HOME_COPY, OBJECTIVES, REPORT_CADENCES } from "../data/landing";
 import { NEXT_ROUND } from "../data/kernel";
 import { PODS, REVDEV_FUNDING_FACTS, RND_OPEN_RFPS } from "../data/programs";
 import { SKILLS } from "./skills";
+import mcp from "../../mcp.json";
 
 export type PostSummary = {
   id: string;
@@ -146,6 +148,14 @@ export const llmsTxt = (site: URL): string =>
     "",
     `- ${link("Apply", NEXT_ROUND.ctaHref)}`,
     ...appLines(),
+    "",
+    "## Data",
+    "",
+    `- Karma: applications, grants, milestones, payouts and Kernel readings. Public GET on \`${KARMA.apiHost}\`, community \`filecoin\`; ${link("OpenAPI spec", `${KARMA.apiHost}/v2/docs/json`)}.`,
+    `- OSO: metrics and code activity, through its MCP server at \`${mcp.mcpServers.oso.url}\` (OAuth). Kernel projects on Karma carry \`osoProjectSlug\`.`,
+    "- Code: each project's own git repository.",
+    "",
+    "When sources disagree, Karma wins for amounts, milestone status and payments, OSO for metrics, git for code. Show both values.",
     "",
     "## Agent skills",
     "",
