@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "filpgf",
   "description": "FilPGF agent toolkit: skills for Filecoin public goods funding reviews and data.",
   "owner": {

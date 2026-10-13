@@ -1,6 +1,7 @@
 ---
-name: querying-oso
+name: filpgf-query-oso
 description: Queries Open Source Observer (OSO) for metrics, funding history and code activity on Filecoin projects through OSO's MCP server. Use when a FilPGF review or report needs measured numbers over time, or when a task mentions OSO or oso.xyz.
+license: MIT
 ---
 
 # Querying OSO
@@ -30,7 +31,7 @@ OSO query:
 
 ## Linking to Karma
 
-A Kernel project from reading-karma-data carries `osoProjectSlug`; filter OSO tables by that slug.
+A Kernel project from filpgf-read-karma carries `osoProjectSlug`; filter OSO tables by that slug.
 
 ## Private data
 

@@ -1,6 +1,7 @@
 ---
-name: reviewing-kernel-work
+name: filpgf-review-work
 description: Produces an evidence packet for a FilPGF milestone or project review — scope, research, reconcile sources, assess, render Markdown with every figure sourced. Use when a committee member or reviewer asks to review a milestone, check a funded project, or prepare a ProPGF or Kernel review.
+license: MIT
 ---
 
 # Reviewing Kernel work
@@ -28,7 +29,7 @@ Review progress:
 ```
 
 1. **Scope**: the project and Karma application reference, the program, the milestone if any, and the as-of date. Confirm them with the user if any is ambiguous.
-2. **Research**: gather from each source with its skill — Karma (reading-karma-data), OSO (querying-oso), the project's git repository. Run independent lookups in parallel.
+2. **Research**: gather from each source with its skill — Karma (filpgf-read-karma), OSO (filpgf-query-oso), the project's git repository. Run independent lookups in parallel.
 3. **Reconcile**: Karma wins for amounts, milestone status and payments; OSO for metrics; git for code. When sources disagree, show both values and name each source.
 4. **Assess**: as the reference file for the review type says.
 5. **Render**: the packet, then a short run log listing each call made and anything that failed.

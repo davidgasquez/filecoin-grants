@@ -1,6 +1,7 @@
 ---
-name: navigating-filpgf
+name: filpgf-get-started
 description: Orients an agent in Filecoin Public Goods Funding (FilPGF) — the Kernel, Revenue Development and R&D programs, ProPGF batches, and where each kind of data lives (filpgf.io, app.filpgf.io on Karma, OSO). Use when a task mentions FilPGF, filpgf.io, Kernel, ProPGF, PLFIF, or Filecoin grants, before picking a data or review skill.
+license: MIT
 ---
 
 # Navigating FilPGF
@@ -22,19 +23,19 @@ For a one-file overview of every page, fetch https://www.filpgf.io/llms.txt.
 
 | Data | Source | Skill |
 |---|---|---|
-| Applications, criteria, approved amounts | Karma funding applications | reading-karma-data |
-| Grants, milestones, verification queue | Karma projects and grants | reading-karma-data |
-| Kernel functions, commitments, readings | Karma `/v2/kernel/*` | reading-karma-data |
-| Metrics, funding history, code activity | OSO | querying-oso |
+| Applications, criteria, approved amounts | Karma funding applications | filpgf-read-karma |
+| Grants, milestones, verification queue | Karma projects and grants | filpgf-read-karma |
+| Kernel functions, commitments, readings | Karma `/v2/kernel/*` | filpgf-read-karma |
+| Metrics, funding history, code activity | OSO | filpgf-query-oso |
 | Code | the project's git repository | clone it |
 
 When two sources disagree, Karma wins for amounts and milestone status, OSO for metrics and git for code. Show both values rather than picking one silently.
 
-For Karma program IDs, run the `programs` command from reading-karma-data.
+For Karma program IDs, run the `programs` command from filpgf-read-karma.
 
 ## Reviewing work
 
-For a milestone or project review, use reviewing-kernel-work.
+For a milestone or project review, use filpgf-review-work.
 
 ## Writing to Karma
 

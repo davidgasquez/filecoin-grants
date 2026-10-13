@@ -17,7 +17,7 @@ describe("skills/", () => {
       expect(skill.name).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
       expect(skill.name.length).toBeLessThanOrEqual(64);
       expect(skill.name).not.toMatch(/anthropic|claude/);
-      expect(skill.href).toContain(`/skills/${skill.name}/SKILL.md`);
+      expect(skill.path).toBe(`/skills/${skill.name}/SKILL.md`);
       expect(skill.description.length).toBeGreaterThan(0);
       expect(skill.description.length).toBeLessThanOrEqual(1024);
       expect(skill.description).not.toMatch(/<[^>]+>/);

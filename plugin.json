@@ -18,5 +18,21 @@
     "grants",
     "karma",
     "oso"
-  ]
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "FilPGF",
+        "shortDescription": "Review and research Filecoin public goods funding",
+        "developerName": "FilPGF",
+        "category": "Productivity",
+        "websiteURL": "https://www.filpgf.io",
+        "defaultPrompt": [
+          "Which milestones are waiting for verification?",
+          "Review this ProPGF milestone",
+          "How is this Kernel project tracking against its SLA?"
+        ]
+      }
+    }
+  }
 }

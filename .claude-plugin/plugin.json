@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "filpgf",
   "version": "0.1.0",
   "description": "Skills for working on Filecoin Public Goods Funding: find programs and data, read Karma and OSO, and prepare milestone and project reviews.",

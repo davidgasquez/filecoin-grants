@@ -139,7 +139,12 @@ them was dead config and has been removed.
   `mcp.json` ([Agent Plugins](https://agent-plugins.org/specification), read by
   Codex, Cursor and Copilot), `.claude-plugin/` (Claude Code; check with
   `claude plugin validate .`) and `.agents/plugins/marketplace.json` (Codex)
-  all package the same folder. `src/lib/__tests__/skills.test.ts`
+  all package the same folder; `src/lib/__tests__/plugin-manifests.test.ts`
+  keeps their shared fields in step. Skill names carry a `filpgf-` prefix
+  because only Claude namespaces skills by plugin.
+- Every file in `skills/` is also served from the site at `/skills/...`
+  (`src/pages/skills/[...path].ts`), so agents can fetch a skill from the URL
+  /llms.txt gives them. `src/lib/__tests__/skills.test.ts`
   checks each skill's frontmatter.
 - `/llms.txt` is a short index of the pages, app destinations and skills, each
   linking to its source. The skills list is read from `skills/*/SKILL.md` at

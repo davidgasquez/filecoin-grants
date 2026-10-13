@@ -1,6 +1,7 @@
 ---
-name: reading-karma-data
+name: filpgf-read-karma
 description: Reads public FilPGF data from the Karma API with a stdlib Python script — programs, funding applications and their criteria, project grants and milestones, the milestone verification queue, and Kernel functions, commitments and readings. No API key needed. Use when a task needs FilPGF or app.filpgf.io application, milestone, grant or Kernel data.
+license: MIT
 ---
 
 # Reading Karma data

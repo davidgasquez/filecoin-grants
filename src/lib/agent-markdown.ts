@@ -149,11 +149,11 @@ export const llmsTxt = (site: URL): string =>
     "",
     "## Agent skills",
     "",
-    `Install with \`npx skills add show-karma/filecoin-grants\`, or as a Claude Code plugin with \`/plugin marketplace add show-karma/filecoin-grants\`.`,
+    `Install with \`npx skills add show-karma/filecoin-grants\`, or as a Claude Code or Codex plugin from the marketplace at ${link("show-karma/filecoin-grants", EXTERNAL.repo)}. Each skill below is also served from this site.`,
     "",
     ...SKILLS.map(
       (skill) =>
-        `- ${link(skill.name, skill.href)}: ${skill.description.split(". ")[0]}.`,
+        `- ${link(skill.name, absolute(skill.path, site))}: ${skill.description.split(". ")[0]}.`,
     ),
     `- ${link("show-karma/skills", EXTERNAL.skills)}: Karma's skills for applying, posting milestones and verifying them`,
     "",

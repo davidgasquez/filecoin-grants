@@ -4,9 +4,7 @@
  * installs. The SKILL.md files are the one source; nothing here restates them.
  */
 
-import { EXTERNAL } from "../data/site";
-
-export type Skill = { name: string; description: string; href: string };
+export type Skill = { name: string; description: string; path: string };
 
 const FILES = import.meta.glob<string>("/skills/*/SKILL.md", {
   query: "?raw",
@@ -31,7 +29,7 @@ export const SKILLS: Skill[] = Object.entries(FILES)
     return {
       name,
       description,
-      href: `${EXTERNAL.repo}/blob/main${path}`,
+      path,
     };
   })
   .sort((a, b) => a.name.localeCompare(b.name));

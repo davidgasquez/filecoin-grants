@@ -2,7 +2,7 @@
 
 For one milestone a team marked complete. The packet informs the reviewer who verifies it on app.filpgf.io; it does not decide.
 
-1. **Find it**: `python3 scripts/karma.py pending` in reading-karma-data lists the queue with `projectUid` and `grantUid`. Read the grant with `grants <projectUID>` and pick the milestone.
+1. **Find it**: `python3 scripts/karma.py pending` in filpgf-read-karma lists the queue with `projectUid` and `grantUid`. Read the grant with `grants <projectUID>` and pick the milestone.
 2. **Criteria**: read the application (`application <REF>`). The milestone's deliverables and success criteria are in `applicationData`, not on the milestone.
 3. **Evidence**: follow every link in the milestone's completion update. Check code claims in git (commits, merged PRs, releases in the milestone window) and metric claims in OSO.
 4. **Rate**: each deliverable as Found, Partial, Not found or Can't verify, with the link.
