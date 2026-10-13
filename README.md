@@ -127,3 +127,15 @@ used, which is what production wants.
 The CSP, cache headers, and the 301s from the retired Hugo URLs (`/propgf/*`,
 `/batches/*`) still need porting to Vercel; the `netlify.toml` that declared
 them was dead config and has been removed.
+
+## For agents
+
+- `/llms.txt` — what the site and app are for, when to use which, and links to
+  every program, report and Karma agent skill. Built from `src/data` by
+  `src/lib/agent-markdown.ts`.
+- `Accept: text/markdown` on `/` returns `/index.md` (`Vary: Accept`), and on a
+  missing page returns `/404.md` with a 404. Vercel routes these, not the page:
+  `src/integrations/markdown-negotiation.ts` adds them to the adapter's
+  `.vercel/output/config.json`. Check with
+  `curl -i -H 'Accept: text/markdown' https://www.filpgf.io/`.
+- The homepage carries Organization and WebSite JSON-LD.
