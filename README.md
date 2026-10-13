@@ -134,9 +134,12 @@ them was dead config and has been removed.
   [Agent Skills](https://agentskills.io/specification) format. Install with
   `npx skills add show-karma/filecoin-grants`, or in Claude Code with
   `/plugin marketplace add show-karma/filecoin-grants` then
-  `/plugin install filpgf@filpgf`. `plugin.json` + `mcp.json`
-  ([Agent Plugins](https://agent-plugins.org/specification)) and
-  `.claude-plugin/` package the same folder. `src/lib/__tests__/skills.test.ts`
+  `/plugin install filpgf@filpgf`, or in Codex with
+  `codex plugin marketplace add show-karma/filecoin-grants`. `plugin.json` +
+  `mcp.json` ([Agent Plugins](https://agent-plugins.org/specification), read by
+  Codex, Cursor and Copilot), `.claude-plugin/` (Claude Code; check with
+  `claude plugin validate .`) and `.agents/plugins/marketplace.json` (Codex)
+  all package the same folder. `src/lib/__tests__/skills.test.ts`
   checks each skill's frontmatter.
 - `/llms.txt` is a short index of the pages, app destinations and skills, each
   linking to its source. The skills list is read from `skills/*/SKILL.md` at
