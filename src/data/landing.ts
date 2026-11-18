@@ -344,9 +344,11 @@ export type ReportCadence = {
   cadence: string;
   title: string;
   description: string;
-  linkText: string;
   /** Omitted while a report has no destination yet — renders as plain text. */
+  linkText?: string;
   href?: string;
+  /** Use instead of linkText/href to show several links on one card. */
+  links?: { text: string; href: string; arrow?: boolean }[];
 };
 
 export const REPORT_CADENCES: ReportCadence[] = [
@@ -355,23 +357,32 @@ export const REPORT_CADENCES: ReportCadence[] = [
     title: "Progress reporting",
     description:
       "Granular tracking from every funded team — what shipped, what moved, what's blocked.",
-    linkText: `Latest: ${PORTFOLIO.reportDate}`,
-    href: reportUrl("biweeklyProgress"),
+    linkText: "Bi-weekly report",
+    href: "https://app.filpgf.io/reports?type=6a233d04e82a77f23c7838f7",
   },
   {
     cadence: "Monthly",
-    title: "Pods reporting",
-    description:
-      "Each pod against its six-month roadmap, including the network-level KPIs it's accountable for.",
+    title: "ProPGF Monthly Report",
+    description: "Monthly report of active funding across ProPGF programs",
     linkText: "Latest: July 2026",
     href: reportUrl("monthlyPods"),
+    links: [
+      {
+        text: "Monthly report",
+        href: "https://app.filpgf.io/reports?type=69e70e9a641448585f44e961",
+        arrow: true,
+      },
+    ],
   },
   {
     cadence: "Continuous",
     title: "Health & impact metrics",
     description:
       "The network-level numbers each program is judged against — resilience, paid usage, and what research has graduated.",
-    linkText: "Coming soon",
+    links: [
+      { text: "Kernel", href: "/kernel/" },
+      { text: "Revenue Development", href: "/revenue-development/" },
+    ],
   },
 ];
 
