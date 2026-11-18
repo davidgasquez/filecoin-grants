@@ -105,6 +105,15 @@ export const RND_NOT_IN_SCOPE = [
   "Work that duplicates what a pod or an existing Kernel function already covers",
 ];
 
+export const RND_OPEN_CALL = {
+  eyebrow: "R&D",
+  title: "Open on a rolling basis",
+  description:
+    "RFPs are published as gaps are identified, and applications are reviewed as they arrive — there's no deadline to wait for.",
+  ctaText: "Apply",
+  ctaHref: "https://app.filpgf.io/programs/1505/apply",
+};
+
 export type Rfp = {
   title: string;
   objective: string;
@@ -317,5 +326,28 @@ export const RND_EVALUATION: { label: string; value: string }[] = [
   {
     label: "Strongest",
     value: "Shipped products with named paying customers within six months",
+  },
+];
+
+export const RND_TIMELINE: ProcessStep[] = [
+  {
+    title: "RFP published",
+    detail: "Published as soon as a gap in the network is identified",
+  },
+  {
+    title: "Applications arrive",
+    detail: "Reviewed as they come in, not against a fixed deadline",
+  },
+  {
+    title: "Initial reviews with AI assistance",
+    detail: "Shortlisted proposals are reviewed by committee",
+  },
+  {
+    title: "Committee review",
+    detail: "Shortlisted and assessed against Filecoin's 2026 network objectives",
+  },
+  {
+    title: "Funded in stages",
+    detail: "Approved projects paid out once milestone work is reviewed and completed",
   },
 ];
